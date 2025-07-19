@@ -1,13 +1,12 @@
 import gradio as gr
 from ultralytics import YOLO
 
-model = YOLO('train/weights/best.pt')
+model = YOLO('models/best.pt')
 
 def detect(image):
     results = model(image)
     annotated_image = results[0].plot()
     return annotated_image
-
 
 iface = gr.Interface(
     fn=detect,
@@ -17,4 +16,6 @@ iface = gr.Interface(
     description="Загрузите изображение, чтобы увидеть, как модель детектирует объекты."
 )
 
-iface.launch()
+if __name__ == "__main__": 
+    print(">>> Launching Gradio...") 
+    iface.launch(inbrowser=True)  
