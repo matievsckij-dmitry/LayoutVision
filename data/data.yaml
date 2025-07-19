@@ -1,0 +1,13 @@
+train: /content/drive/MyDrive/XRPlace_data/datasets/train/images
+val: /content/drive/MyDrive/XRPlace_data/datasets/valid/images
+test: /content/drive/MyDrive/XRPlace_data/datasets/test/images
+
+nc: 5
+names: ['bathroom', 'door', 'perimeter', 'stairs', 'window']
+
+roboflow:
+  workspace: xrplace
+  project: floorplans-r7e9l-jbg4h
+  version: 1
+  license: Public Domain
+  url: https://universe.roboflow.com/xrplace/floorplans-r7e9l-jbg4h/dataset/1
