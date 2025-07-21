@@ -44,15 +44,13 @@ def detect(image, conf_threshold, selected_classes):
     return annotated, pd.DataFrame(records), zip_path
 
 # 3) Собираем список примеров из папки с тренировочными картинками
-#    Предполагается, что они лежат в '../data/train/images'
 examples_folder = os.path.join(os.path.dirname(__file__), "..", "data", "test", "images")
 example_files = []
 if os.path.isdir(examples_folder):
     for fname in sorted(os.listdir(examples_folder)):
         if fname.lower().endswith((".jpg", ".jpeg", ".png")):
             example_files.append(os.path.join(examples_folder, fname))
-    # берём не более 6 первых
-    example_files = example_files[:6]
+    example_files = example_files[:6]  # первые 6 примеров
 
 # 4) Строим интерфейс Blocks
 with gr.Blocks(css=".gr-button {background: #008CBA; color: white}") as demo:
@@ -89,4 +87,4 @@ with gr.Blocks(css=".gr-button {background: #008CBA; color: white}") as demo:
 
 # 6) Запуск приложения    
 if __name__ == "__main__":
-    demo.launch(inbrowser=True)
+    demo.launch(inbrowser=True, server_name="0.0.0.0", server_port=7860)
